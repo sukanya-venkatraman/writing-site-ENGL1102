@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Story Generator</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 40px;
+            background-color: #f4f4f4;
+        }
+        h1 {
+            color: #333;
+        }
+        label {
+            font-weight: bold;
+            margin-top: 10px;
+            display: block;
+        }
+        input[type="text"], input[type="number"], select {
+            padding: 8px;
+            margin-top: 5px;
+            margin-bottom: 20px;
+            width: 100%;
+            max-width: 300px;
+        }
+        button {
+            padding: 10px 15px;
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            cursor: pointer;
+            font-size: 16px;
+        }
+        button:hover {
+            background-color: #45a049;
+        }
+        .story-output {
+            margin-top: 20px;
+            background-color: white;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+    </style>
+</head>
+<body>
+    <h1>Interactive Story Generator</h1>
+    <p>Welcome, adventurer! Fill in the blanks and let's create your story together.</p>
+
+    <label for="name">What is your name?</label>
+    <input type="text" id="name" placeholder="Enter your name" required>
+
+    <label for="setting">Where would you like to go on your adventure?</label>
+    <input type="text" id="setting" placeholder="e.g., a forest, a mountain" required>
+
+    <label for="item">What magical item will you use in your journey?</label>
+    <input type="text" id="item" placeholder="e.g., a sword, a shield" required>
+
+    <label for="adjective">Pick an adjective for your journey:</label>
+    <input type="text" id="adjective" placeholder="e.g., exciting, dangerous" required>
+
+    <label for="number">How many days will you travel?</label>
+    <input type="number" id="number" placeholder="e.g., 7, 10" required>
+
+    <button onclick="generateStory()">Generate Your Story</button>
+
+    <div id="story" class="story-output" style="display:none;"></div>
+
+    <script>
+        function generateStory() {
+            // Getting user inputs
+            let name = document.getElementById("name").value;
+            let setting = document.getElementById("setting").value;
+            let item = document.getElementById("item").value;
+            let adjective = document.getElementById("adjective").value;
+            let number = document.getElementById("number").value;
+
+            // Generating the story
+            let story = `
+                <h2>Adventure Awaits, ${name}!</h2>
+                <p>Once upon a time, in a land filled with wonders and dangers, there was a brave soul named <strong>${name}</strong>. 
+                ${name} set out on an adventure to the mysterious <strong>${setting}</strong>, a place filled with ancient secrets and untold magic.</p>
+                
+                <p>With nothing but a <strong>${item}</strong> in hand, <strong>${name}</strong> embarked on a <strong>${adjective}</strong> journey, 
+                filled with challenges and discoveries that tested their strength and courage.</p>
+
+                <p>As the days passed, <strong>${name}</strong> traveled through thick forests, across wild rivers, and up treacherous mountains. 
+                For <strong>${number}</strong> days, they pressed forward, not knowing what awaited them beyond the horizon, but always determined to continue.</p>
+
+                <p>On the final day of their journey, <strong>${name}</strong> uncovered a great secret, hidden deep within the heart of the <strong>${setting}</strong>. 
+                It was a moment of triumph, a story that would be passed down for generations. And so, their legend began!</p>
+            `;
+
+            // Displaying the story
+            document.getElementById("story").innerHTML = story;
+            document.getElementById("story").style.display = "block";
+        }
+    </script>
+</body>
+</html>
