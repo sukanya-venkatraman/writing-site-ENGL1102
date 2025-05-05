@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Interactive Writing Process</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      padding: 2rem;
+      background-color: #f0f4f8;
+    }
+    .container {
+      max-width: 600px;
+      margin: auto;
+      background: white;
+      padding: 2rem;
+      border-radius: 10px;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    }
+    label, input, button {
+      display: block;
+      width: 100%;
+      margin-top: 1rem;
+    }
+    button {
+      background-color: #4CAF50;
+      color: white;
+      border: none;
+      padding: 0.75rem;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+    #output {
+      margin-top: 2rem;
+      white-space: pre-wrap;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h2>Create Your Story</h2>
+
+    <label for="protagonist">Protagonist:</label>
+    <input type="text" id="protagonist" placeholder="e.g., A young wizard">
+
+    <label for="setting">Setting:</label>
+    <input type="text" id="setting" placeholder="e.g., a magical forest">
+
+    <label for="conflict">Conflict:</label>
+    <input type="text" id="conflict" placeholder="e.g., must defeat a dark force">
+
+    <button onclick="generateStory()">Generate Story</button>
+
+    <div id="output"></div>
+  </div>
+
+  <script>
+    const protagonistInput = document.getElementById('protagonist');
+    const settingInput = document.getElementById('setting');
+    const conflictInput = document.getElementById('conflict');
+    const output = document.getElementById('output');
+
+    function generateStory() {
+      const protagonist = protagonistInput.value;
+      const setting = settingInput.value;
+      const conflict = conflictInput.value;
+
+      const story = `${protagonist} finds themselves in ${setting}, where they ${conflict}. What will happen next?`;
+      output.textContent = story;
+    }
+  </script>
+</body>
+</html>
