@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Talk to Me (Chatbot)</title>
+  <style>
+    body {
+      font-family: 'Segoe UI', sans-serif;
+      padding: 30px;
+      background-color: #f5f5f5;
+    }
+    #chatbox {
+      border: 1px solid #ccc;
+      background-color: #ffffff;
+      padding: 20px;
+      max-width: 600px;
+      margin: auto;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+      border-radius: 10px;
+    }
+    .message {
+      margin: 10px 0;
+    }
+    .user {
+      font-weight: bold;
+      color: #007acc;
+    }
+    .bot {
+      color: #333;
+    }
+    button {
+      margin: 5px 4px;
+      padding: 8px 12px;
+      background-color: #007acc;
+      color: white;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+    button:hover {
+      background-color: #005f99;
+    }
+  </style>
+</head>
+<body>
+
+<div id="chatbox">
+  <div class="message bot">Hey! I’m Sukanya-ish. Wanna talk?</div>
+  
+  <div id="options">
+    <button onclick="respond('project')">What was your favorite project?</button>
+    <button onclick="respond('reading')">What do you do for fun?</button>
+    <button onclick="respond('advice')">Got any advice?</button>
+    <button onclick="respond('random')">Say something random</button>
+    <button onclick="respond('unfinished')">What're some excerpts of things you've written?</button>
+  </div>
+  
+  <div id="chatlog"></div>
+</div>
+
+<script>
+function respond(option) {
+  const chatlog = document.getElementById('chatlog');
+  let userInput = '';
+  let botReply = '';
+
+  switch(option) {
+    case 'project':
+      userInput = "Which was your favorite project?";
+      botReply = "I had the most fun with Project 2 (the gothic creative writing piece). I feel like I got really into the melodrama of the Victorian era narrationand honestly, I was cackling at how dramatically everything spirals as the story progresses.";
+      break;
+    case 'reading':
+      userInput = "What do you do for fun?";
+      botReply = "I like to read - specifically, I like to read really long (what some may consider obscure) webnovels with convoluted plots. If it doesn’t have 1000+ chapters, questionable pacing, and MTL (translations) that just keep getting worse, I don’t want it.";
+      break;
+    case 'advice':
+      userInput = "Do you have any advice?";
+      botReply = "I personally don’t think I’m qualified to give advice (what with my barely 18 years of life experience). No more pearls of wisdom — my fountain of inspiration is dry… But on a more serious note, something my dad once told me that’s really stuck is: 'What you cannot measure, you cannot manage.' When you’re trying to improve at anything, if you’re unable to self-assess and gauge your level, you’ll never be able to tell what’s working or where to grow. So — take stock. Be honest with yourself. That’s usually where the progress starts.";
+      break;
+    case 'random':
+      userInput = "Say something random";
+      const randomLines = [
+        "Sometimes I think in Tumblr posts.",
+        "Every essay starts as a rant in my notes app.",
+        "My sister and I obsessed over Hamilton when we were in high school (we still do) and memorized all the song lyrics.",
+        "My recent search history - relative to this ePortfolio - consists of 'are red chillis good for plants', 'how to code a chatbot', and 'miles edgeworth investigations'",
+        "I’d survive a fantasy apocalypse as long as I had my phone and some good Wi-Fi."
+      ];
+      botReply = randomLines[Math.floor(Math.random() * randomLines.length)];
+      break;
+    case 'unfinished':
+      userInput = "What're some excerpts of things you've written?";
+      const resp = [
+        "Part of a story I was writing for my sister's graduation: There are two people standing, side by side together, looking ahead to the road in front of them. It feels as though they have just caught up to the other. The two of them had been walking this path together for days, months, years now. But now they were at a crossroads. One path leads forward - both are unable to see where it ends. The other path curves right, deeper into another forest. Up till now, they had traveled their journey together, unwilling to leave each other’s side for too long. It had always been a race for the two of them, but it was a race where they knew the other would be waiting at the finish line. This new path did not guarantee the finish line, it guaranteed nothing. But unlike all the paths before, all the crossroads and mountains, they knew it was time to part.",
+        "Give a palindrome a backstory - 'nut for a jar of tuna': Sitting upside down on a carriage attempting to read the fading board of a shop down the road while riding away on the back of a horse is admittedly a preposterous, and rather painful thing to do. Your head tips backward, the blood rushes to your face and you look like a squashed tomato at the end of a performance, all wrinkled and red, with your insides spilling out and a bit of green from the stem caught somewhere in the middle.",
+        "A car salesman having a tough time - a little excerpt from a comedy I'm TRYING to write (my humor stores are empty): 'Listen–Listen. I have connections okay? My cousin’s best friend’s uncle once sold cars. He told me dealerships always have secret discounts. You take another $10,000 off, and we have a deal.' The customer, Telemus, said as though he was the one offering him the best deal. He was so tired. It was almost five in the evening and their dealings had already been going on for over an hour. An hour of a grown man spilling his entire tragic backstory of how his mother had left him as a child and how he formed a special connection to the car she had used to drive away from them, which so happened to have a sticker that greatly resembled their own car logo. After he had learned this, his admiration of the shapes and the curves of their 'beautifully muscular machinery' had developed. Apparently, it reminded him of his mother. Eugh. He just wanted to get through this deal and call it a day."
+	];
+      botReply = resp.join("<br><br>");
+      break;
+  }
+
+  chatlog.innerHTML += `<div class="message user">${userInput}</div>`;
+  chatlog.innerHTML += `<div class="message bot">${botReply}</div>`;
+}
+</script>
+
+</body>
+</html>
